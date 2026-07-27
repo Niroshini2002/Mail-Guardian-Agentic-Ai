@@ -122,17 +122,73 @@ identify sophisticated phishing attacks that imitate trusted organizations.
 
 ---
 
+## Agentic Design Patterns Used
+
+| Pattern | Where It's Used | Purpose |
+|---|---|---|
+| Router | `agents/triage_agent.py` → `triage_agent()` | Classifies and routes each email into Important / Spam / Suspicious |
+| Tool-use | `agents/link_verification_agent.py` → `extract_urls()`, `link_verification_agent()` | Extracts URLs and analyzes domain/brand legitimacy as a discrete tool step |
+| Reflection | `agents/link_verification_agent.py` → `reflect_on_verdict()` | A second model independently re-checks the initial phishing verdict before finalizing it |
+| Orchestrator | `agents/orchestrator.py` → `process_email()` | Coordinates Agent 1 and Agent 2 into a single end-to-end pipeline, passing structured data between them |
+
+---
+
+## Agent-to-Agent Communication
+
+Agent 1 (Triage) and Agent 2 (Link Verification) communicate through a 
+structured JSON hand-off, coordinated by the orchestrator:
+
+```
+User Input (subject, body)
+        │
+        ▼
+┌───────────────────┐
+│ Agent 1: Triage     │───▶ { classification, reasons, recommendation }
+└───────────────────┘
+        │
+        ▼
+   URL Extraction
+        │
+        ▼
+┌────────────────────────┐
+│ Agent 2: Link Verification│───▶ { verdict, trust_score, risk_level, reasons }
+│         + Reflection       │───▶ (second model re-validates the verdict)
+└────────────────────────┘
+        │
+        ▼
+Combined Security Report
+```
+
+---
+
 ## RAG Pipeline
 
 The Retrieval-Augmented Generation (RAG) pipeline enhances contextual 
 understanding by retrieving domain-specific security knowledge.
 
 **Components**
-- Email security knowledge base
-- Phishing indicators
-- Scam detection patterns
-- Context-aware prompt augmentation
-- Multi-agent response synthesis
+- Email security knowledge base (20 documents covering phishing patterns, 
+  scam types, and detection concepts)
+- Chunking strategy: each document covers a single, focused topic, so no 
+  further text splitting was required
+- Embedding model: `all-MiniLM-L6-v2` (sentence-transformers) — compact, 
+  fast, and runs locally with no API cost
+- Vector store: ChromaDB (persistent local storage)
+- Context-aware retrieval to support agent decision-making
+
+**Retrieval Evaluation (5 sample queries):**
+
+| Query | Top Match | Relevant? |
+|---|---|---|
+| "email asking to verify account urgently" | Account Verification Scams | ✅ Yes |
+| "suspicious domain with numbers instead of letters" | Brand Impersonation | ✅ Yes |
+| "email claiming I won a prize" | Lottery and Prize Scams | ✅ Yes |
+| "link that redirects multiple times" | Suspicious Redirect Behavior | ✅ Yes |
+| "email requesting my password directly" | Credential Harvesting | ✅ Yes |
+
+All 5 test queries retrieved highly relevant documents from the knowledge 
+base, confirming the embedding model effectively captures semantic 
+similarity between user queries and domain-specific security content.
 
 ---
 
@@ -166,10 +222,98 @@ Mail Guardian provides a robust and transparent approach to email security.
 
 ## Setup Instructions
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Niroshini2002/Mail-Guardian-Agentic-Ai.git
+   cd Mail-Guardian-Agentic-Ai
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Create a `.env` file in the project root with the following keys:
+   ```
+   GROQ_API_KEY=your_groq_api_key_here
+   OPENROUTER_API_KEY=your_openrouter_api_key_here
+   ```
+
+4. Build the RAG vector store (one-time setup):
+   ```bash
+   python generate_docs.py
+   python rag/ingest.py
+   ```
+
+5. Run the Streamlit app locally:
+   ```bash
+   streamlit run app.py
+   ```
+
+---
+
 ## Model Selection Strategy
+
+| Sub-task | Model (Provider) | Why Chosen |
+|---|---|---|
+| Email triage / classification | Llama 3.1 8B Instant (Groq) | Very low latency and cost, sufficient reasoning for a straightforward classification task |
+| Link verification / phishing analysis | Llama 3.1 8B Instant (Groq) | Fast initial analysis of URL and domain patterns |
+| Verdict reflection / validation | Nvidia Nemotron 3 Ultra (OpenRouter, free tier) | A second, independent model reviews the initial verdict, adding a validation layer and reducing single-model blind spots |
+
+---
 
 ## Architecture Diagram
 
+```
+User Input (Sender, Subject, Body)
+            │
+            ▼
+   ┌─────────────────┐
+   │   Agent 1:        │
+   │   Triage Agent     │──── classifies: Important / Spam / Suspicious
+   └────────┬──────────┘
+            │
+            ▼
+   URL Extraction (regex)
+            │
+            ▼
+   ┌─────────────────────────┐
+   │   Agent 2:                 │
+   │   Link Verification        │──── queries RAG knowledge base
+   │   + Reflection               │──── verdict: Genuine / Phishing + Trust Score
+   └────────┬────────────────────┘
+            │
+            ▼
+   Combined Security Report
+   (Classification + Verdict + Trust Score + Recommendation)
+```
+
+---
+
 ## Live Demo
 
+[To be added after Streamlit Cloud deployment]
+
+---
+
 ## Known Limitations
+
+- No persistent error handling yet for API failures, rate limits, or malformed model responses
+- Free-tier OpenRouter models may change availability without notice
+- The system currently processes one email at a time (no batch processing)
+- RAG knowledge base is a curated set of general phishing patterns rather 
+  than a live threat-intelligence feed, so it will not catch entirely novel 
+  attack patterns not represented in the knowledge base
+- No persistent storage of user-submitted emails (by design, for privacy — 
+  see Security & Privacy Considerations below)
+
+---
+
+## Security & Privacy Considerations
+
+- No email data is stored on the server or in any database
+- Input is processed in-memory only and discarded after the response is returned
+- All data transmission occurs over HTTPS (Streamlit Cloud default)
+- Email content is sent to third-party LLM providers (Groq/OpenRouter) for 
+  analysis as part of the agentic pipeline — no persistent storage occurs 
+  at any stage
