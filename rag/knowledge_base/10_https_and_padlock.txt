@@ -1,0 +1,6 @@
+Security Indicator: HTTPS and Domain Verification
+The presence of "https://" and a padlock icon indicates an encrypted 
+connection, but it does NOT verify that a site is legitimate or safe — 
+attackers can obtain HTTPS certificates for phishing domains too. Users 
+should verify the actual domain name matches the expected organization, 
+not just check for the padlock icon.

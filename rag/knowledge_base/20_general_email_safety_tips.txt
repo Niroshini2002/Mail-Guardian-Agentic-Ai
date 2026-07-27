@@ -1,0 +1,6 @@
+General Guidance: Email Safety Best Practices
+Users should avoid clicking links in unsolicited emails, verify sender 
+domains carefully, never share passwords or OTPs via email, hover over 
+links to preview the actual destination before clicking, and contact 
+organizations directly through official channels (not links in the email) 
+when in doubt about a message's legitimacy.

@@ -1,0 +1,6 @@
+Detection Concept: Trust Scoring
+A trust score aggregates multiple risk signals (domain age, brand 
+similarity, HTTPS presence, redirect behavior, language patterns) into a 
+single interpretable metric. Lower scores indicate higher risk. Trust 
+scoring allows systems to communicate confidence levels rather than binary 
+safe/unsafe labels alone.

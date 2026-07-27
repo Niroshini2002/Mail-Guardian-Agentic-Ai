@@ -1,0 +1,6 @@
+Detection Technique: Email-URL Correlation
+Cross-referencing the claimed sender or brand in an email's content against 
+the actual destination domain of embedded links is an effective phishing 
+detection technique. A mismatch, such as an email claiming to be from a 
+bank but linking to an unrelated or lookalike domain, strongly indicates 
+phishing.

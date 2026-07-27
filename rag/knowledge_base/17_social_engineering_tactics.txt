@@ -1,0 +1,6 @@
+Detection Concept: Social Engineering Tactics
+Phishing relies heavily on psychological manipulation rather than technical 
+exploits alone. Common tactics include creating urgency, invoking 
+authority (pretending to be IT support or a company executive), and 
+exploiting fear (threats of account loss or legal action) to bypass 
+rational scrutiny.

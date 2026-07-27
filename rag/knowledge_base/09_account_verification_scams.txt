@@ -1,0 +1,5 @@
+Scam Type: Account Verification Scams
+These messages claim an account will be locked, suspended, or deleted 
+unless the user "verifies" their identity by clicking a link and entering 
+credentials. This is one of the most common phishing templates because it 
+exploits fear of losing access to an important service.

@@ -1,0 +1,6 @@
+Phishing Pattern: Generic Greetings
+Legitimate organizations that have an existing relationship with a customer 
+usually address them by name. Phishing emails often use generic greetings 
+like "Dear Customer", "Dear User", or "Dear Valued Member" because the 
+attacker does not have access to the recipient's actual name or account 
+details.

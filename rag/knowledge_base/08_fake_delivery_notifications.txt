@@ -1,0 +1,5 @@
+Scam Type: Fake Delivery Notifications
+Attackers send emails claiming a package could not be delivered or requires 
+additional customs fees, prompting the recipient to click a link or provide 
+payment details. These often impersonate courier services and delivery 
+companies and create urgency around a missed delivery window.

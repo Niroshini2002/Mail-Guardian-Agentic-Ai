@@ -1,0 +1,5 @@
+Phishing Pattern: Malicious Attachments
+Some phishing emails rely on malicious attachments (invoices, receipts, or 
+documents) rather than links. Unexpected attachments, especially with 
+executable extensions or requests to "enable macros", are common vectors 
+for malware delivery alongside social engineering tactics.

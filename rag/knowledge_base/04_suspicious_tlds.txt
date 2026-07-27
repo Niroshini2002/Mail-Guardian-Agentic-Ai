@@ -1,0 +1,6 @@
+Phishing Pattern: Suspicious Top-Level Domains
+Legitimate businesses typically use standard domains like .com, .org, or 
+country-specific domains relevant to their location (e.g., .lk for Sri 
+Lanka). Phishing sites often use unusual or cheap top-level domains such as 
+.xyz, .top, .tk, .info, or .click, which are frequently used because they 
+are inexpensive and easy to register anonymously.
