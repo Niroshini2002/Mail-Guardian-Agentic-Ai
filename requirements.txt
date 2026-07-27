@@ -5,3 +5,5 @@ groq
 openai
 python-dotenv
 chromadb
+dotenv
+streamlit
