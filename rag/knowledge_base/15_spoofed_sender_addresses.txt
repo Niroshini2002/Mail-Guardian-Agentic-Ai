@@ -1,0 +1,5 @@
+Phishing Pattern: Spoofed Sender Addresses
+Attackers can forge the "From" field of an email to make it appear to come 
+from a trusted source. Careful inspection of the full email header and 
+actual sending domain (not just the display name) often reveals 
+inconsistencies that indicate spoofing.

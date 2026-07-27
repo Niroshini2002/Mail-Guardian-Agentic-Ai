@@ -1,0 +1,5 @@
+Security Indicator: Newly Registered Domains
+Phishing campaigns often use domains that were registered very recently, 
+sometimes within days of the attack. A domain claiming to be an established 
+bank or company but registered only weeks ago is a significant red flag 
+for fraud.

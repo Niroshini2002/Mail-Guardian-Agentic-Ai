@@ -1,0 +1,5 @@
+Security Indicator: Suspicious Redirect Behavior
+Phishing links often use multiple redirects to obscure the final 
+destination URL and evade basic filtering. A link that redirects through 
+several unrelated domains before landing on a login page is a strong 
+indicator of malicious intent.

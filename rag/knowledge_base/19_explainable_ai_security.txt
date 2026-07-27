@@ -1,0 +1,6 @@
+Detection Concept: Explainable Security Reporting
+Effective phishing detection systems should provide clear reasoning for 
+their verdicts rather than simple binary labels. Explaining which specific 
+signals (e.g., domain mismatch, urgency language, missing HTTPS) 
+contributed to a decision helps users understand and trust the system's 
+output, and supports better security awareness.

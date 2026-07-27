@@ -1,0 +1,5 @@
+Scam Type: Banking Fraud Emails
+These emails impersonate banks and financial institutions, claiming there 
+is unusual activity on the recipient's account, a failed transaction, or a 
+need to "reverify" banking details. They direct victims to fake login pages 
+designed to steal banking credentials and one-time passwords (OTPs).

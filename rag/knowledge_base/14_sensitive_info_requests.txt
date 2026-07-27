@@ -1,0 +1,5 @@
+Phishing Pattern: Requests for Sensitive Information
+Legitimate organizations rarely ask customers to provide passwords, PINs, 
+full card numbers, or OTPs via email. Any email requesting this type of 
+sensitive information directly should be treated with high suspicion, 
+regardless of how official it appears.

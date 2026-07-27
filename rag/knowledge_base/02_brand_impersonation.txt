@@ -1,0 +1,6 @@
+Phishing Pattern: Brand Impersonation
+Attackers register lookalike domains that closely resemble legitimate brand 
+names, such as replacing letters with numbers (amaz0n.com instead of 
+amazon.com), adding extra words (amazon-security.com), or using different 
+top-level domains (amazon.xyz instead of amazon.com). Always verify the 
+exact domain spelling before trusting a link.

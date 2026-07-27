@@ -1,0 +1,6 @@
+Phishing Pattern: Urgency-Based Language
+Scammers frequently use time pressure to prevent victims from thinking 
+carefully. Common phrases include "act now", "within 24 hours", "immediate 
+action required", "your account will be suspended". Legitimate organizations 
+rarely demand instant action via email and typically provide reasonable 
+timeframes for account-related requests.
