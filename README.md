@@ -292,7 +292,7 @@ User Input (Sender, Subject, Body)
 
 ## Live Demo
 
-[To be added after Streamlit Cloud deployment]
+https://mail-guardian-agentic-ai-7.streamlit.app/
 
 ---
 
