@@ -10,5 +10,5 @@ def get_secret(key_name):
         return os.getenv(key_name)
 
 GROQ_API_KEY = get_secret("GROQ_API_KEY")
-OPENROUTER_API_KEY = get_secret("OPEN_ROUTER_API_KEY")
+OPENROUTER_API_KEY = get_secret("OPENROUTER_API_KEY")
 
