@@ -12,11 +12,6 @@ Large Language Models (LLMs), Mail Guardian delivers context-aware and
 explainable email security analysis.
 
 ---
-Clone the repository:
-   ```bash
-   git clone https://github.com/Niroshini2002/Mail-Guardian-Agentic-Ai.git
-   cd Mail-Guardian-Agentic-Ai
- ```
 
 ## Live Demo
 
@@ -233,24 +228,30 @@ Mail Guardian provides a robust and transparent approach to email security.
 
 ## Setup Instructions
 
-1. Install dependencies:
+1.  Clone the repository:
+   ```bash
+   git clone https://github.com/Niroshini2002/Mail-Guardian-Agentic-Ai.git
+   cd Mail-Guardian-Agentic-Ai
+ ```
+
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. Create a `.env` file in the project root with the following keys:
+3. Create a `.env` file in the project root with the following keys:
    ```
    GROQ_API_KEY=your_groq_api_key_here
    OPENROUTER_API_KEY=your_openrouter_api_key_here
    ```
 
-3. Build the RAG vector store (one-time setup):
+4. Build the RAG vector store (one-time setup):
    ```bash
    python generate_docs.py
    python rag/ingest.py
    ```
 
-4. Run the Streamlit app locally:
+5. Run the Streamlit app locally:
    ```bash
    streamlit run app.py
    ```
