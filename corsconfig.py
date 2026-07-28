@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 def get_secret(key_name):
     try:
-        return st.secret[key_name]
+        return st.secrets[key_name]
     except Exception:
         load_dotenv()
         return os.getenv(key_name)
