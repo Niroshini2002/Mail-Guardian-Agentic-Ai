@@ -3,13 +3,15 @@ import re
 from dotenv import load_dotenv
 from groq import Groq
 from openai import OpenAI
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
+from corsconfig import GROQ_API_KEY, OPENROUTER_API_KEY
 
-load_dotenv()
 
-groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+groq_client = Groq(api_key=GROQ_API_KEY)
 openrouter_client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY")
+    api_key=OPENROUTER_API_KEY
 )
 
 def extract_urls(email_body):
