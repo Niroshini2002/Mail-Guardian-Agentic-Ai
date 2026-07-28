@@ -1,9 +1,11 @@
-import os
-from dotenv import load_dotenv
 from groq import Groq
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
+from corsconfig import GROQ_API_KEY
 
-load_dotenv()
-api_key = os.getenv("GROQ_API_KEY")
+
+api_key =GROQ_API_KEY
 client = Groq(api_key=api_key)
 print("Connected!")
 
